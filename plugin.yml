@@ -1,0 +1,6 @@
+name: WorldBorder
+main: byalperens\border\WorldBorder
+api: 5.18.1
+author: ByAlperenS
+version: 1.0
+load: STARTUP
