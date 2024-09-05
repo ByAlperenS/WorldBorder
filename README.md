@@ -1,5 +1,7 @@
 # World Border
 
+<a href="https://poggit.pmmp.io/p/WorldBorders"><img src="https://poggit.pmmp.io/shield.state/WorldBorders"></a>
+<br>
 This plugin adds a new border block to your server and covers an area you specify with border blocks.
 
 ![](https://github.com/ByAlperenS/WorldBorder/blob/master/image/image.png)
