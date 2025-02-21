@@ -15,7 +15,6 @@ use pocketmine\block\BlockTypeIds;
 use pocketmine\block\BlockTypeInfo;
 use pocketmine\math\Vector3;
 use pocketmine\plugin\PluginBase;
-use pocketmine\utils\TextFormat as C;
 
 class WorldBorder extends PluginBase{
 
@@ -26,11 +25,10 @@ class WorldBorder extends PluginBase{
     }
 
     public function onEnable(): void{
-        $this->getLogger()->info(C::GREEN . "Plugin Enabled!");
         (new DatabaseManager())->init($this->getDataFolder());
         AreaManager::load();
         $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
-        $this->getServer()->getCommandMap()->register("wborder", new WorldBorderCommand());
+        $this->getServer()->getCommandMap()->register("worldborder", new WorldBorderCommand($this));
 
         CustomiesBlockFactory::getInstance()->registerBlock(
             static fn () => new WorldBorderBlock(new BlockIdentifier(BlockTypeIds::newId()), "World Border", new BlockTypeInfo(BlockBreakInfo::indestructible())),

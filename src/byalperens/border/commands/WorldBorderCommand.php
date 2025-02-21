@@ -4,18 +4,26 @@ namespace byalperens\border\commands;
 
 use byalperens\border\area\cache\PosCache;
 use byalperens\border\manager\AreaManager;
+use byalperens\border\WorldBorder;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\permission\DefaultPermissionNames;
 use pocketmine\player\Player;
+use pocketmine\plugin\PluginOwned;
+use pocketmine\plugin\PluginOwnedTrait;
 use pocketmine\utils\TextFormat as C;
 
-class WorldBorderCommand extends Command{
+class WorldBorderCommand extends Command implements PluginOwned{
+    use PluginOwnedTrait;
 
-    public function __construct(){
-        parent::__construct("wborder", "World Border Commands", C::DARK_GREEN . "Usage: " . C::GREEN . "/wborder help");
+    /**
+     * @param WorldBorder $plugin
+     */
+    public function __construct(WorldBorder $plugin){
+        parent::__construct("worldborder", "World Border Commands", C::DARK_GREEN . "Usage: " . C::GREEN . "/wborder help");
         $this->setPermission(DefaultPermissionNames::GROUP_OPERATOR);
         $this->setPermissionMessage(C::RED . "You don't have permission for this command!");
+        $this->owningPlugin = $plugin;
     }
 
     /**
